@@ -1,55 +1,27 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+
+import { Send } from "lucide-react";
 
 export default function Chat() {
-  const [msg, setMsg] = useState("");
-  const [log, setLog] = useState<string[]>([]);
-  const wsRef = useRef<WebSocket | null>(null);
-
-  // open socket once
-  useEffect(() => {
-    const ws = new WebSocket("ws://localhost:4000/chat");
-    wsRef.current = ws;
-
-    ws.onopen = () => addLog("🔗 connected");
-    ws.onmessage = (e) => addLog(`🟢 ${e.data}`);
-    ws.onerror = (e) => addLog("⚠️ error");
-    ws.onclose = () => addLog("❌ closed");
-
-    // clean up on unmount
-    return () => ws.close();
-  }, []);
-
-  const addLog = (txt: string) => setLog((l) => [...l, txt]);
-
-  const send = () => {
-    if (wsRef.current?.readyState === WebSocket.OPEN) {
-      wsRef.current.send(msg);
-      setMsg("");
-    } else addLog("🚫 socket not open");
-  };
-
   return (
-    <div>
-      <h3>Chat</h3>
-      <div
-        style={{
-          border: "1px solid #ccc",
-          padding: "8px",
-          height: "150px",
-          overflow: "auto",
-        }}
-      >
-        {log.map((l, i) => (
-          <div key={i}>{l}</div>
-        ))}
+    <div className="h-full flex flex-col relative">
+      {/* Chat messages area with padding bottom to prevent overlap */}
+      <div className="flex-1 overflow-y-auto pb-20">
+        {/* placeholder for chat messages */}
+        <div className="p-4">{/* Your chat messages will go here */}</div>
       </div>
-      <input
-        value={msg}
-        onChange={(e) => setMsg(e.target.value)}
-        placeholder="type…"
-      />
-      <button onClick={send}>Send</button>
+
+      {/* Fixed input area */}
+      <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-row gap-2">
+        <input
+          type="text"
+          placeholder="พิมพ์ข้อความที่นี่..."
+          className="outline-1 outline-neutral-600 rounded-full py-2 px-3 text-sm w-full"
+        />
+        <button className="rounded-full w-8 h-8 flex items-center justify-center border-neutral-600 border">
+          <Send size={16} color="#525252" className="" />
+        </button>
+      </div>
     </div>
   );
 }
