@@ -20,10 +20,7 @@ const LineSeed = localFont({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Bento",
-    template: "%s | Bento",
-  },
+  title: "Bento - Get Closer.",
 };
 
 export default function RootLayout({
@@ -36,7 +33,7 @@ export default function RootLayout({
       <body
         className={`${LineSeed.className} relative h-screen w-screen overflow-hidden antialiased`}
       >
-        <div className="scrollbar-hide h-full w-full overflow-auto flex justify-center items-center">
+        <div className="scrollbar-hide h-full w-full overflow-auto">
           <ThemeProvider enableSystem={true} defaultTheme="system">
             <Theme>{children}</Theme>
           </ThemeProvider>

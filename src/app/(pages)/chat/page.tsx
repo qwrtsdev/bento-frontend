@@ -3,7 +3,7 @@
 import { ImagePlay, Smile, Send } from "lucide-react";
 import { useTheme } from "next-themes";
 
-export default function ChatPage() {
+export default function Chat() {
   const { resolvedTheme } = useTheme();
 
   return (
@@ -14,8 +14,7 @@ export default function ChatPage() {
         <div className="p-4">{/* Your chat messages will go here */}</div>
       </div>
 
-      {/* Fixed input area */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-row gap-2">
+      <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-row gap-2 border-t border-neutral-600 bg-neutral dark:bg-neutral-900">
         <div className="flex flex-row gap-2">
           <button className="rounded-full min-w-9 w-9 h-9 flex items-center justify-center self-end hover:cursor-pointer dark:hover:bg-neutral-600/30 hover:bg-neutral-900/30">
             <ImagePlay
@@ -34,7 +33,7 @@ export default function ChatPage() {
         </div>
         <textarea
           placeholder="พิมพ์ข้อความที่นี่..."
-          className="outline-1 outline-neutral-900 dark:outline-neutral-700 rounded-lg py-2 px-3 text-sm w-full resize-none min-h-9 max-h-18 overflow-y-auto scrollbar-hide bg-neutral-950 text-neutral-300 dark:bg-neutral-600"
+          className="outline-none rounded-lg py-2 px-3 text-sm w-full resize-none min-h-9 max-h-18 overflow-y-auto scrollbar-hide bg-neutral-950 text-neutral-300 dark:bg-neutral-600"
           rows={1}
           onInput={(e) => {
             const target = e.target as HTMLTextAreaElement;

@@ -14,21 +14,21 @@ export default function ThemeToggle() {
 
   if (resolvedTheme === "dark")
     return (
-      <span
+      <div
         className="rounded-full group cursor-pointer hover:bg-neutral-500/30 p-2"
         onClick={() => setTheme("light")}
       >
         <Moon size={18} color="#d4d4d4" />
-      </span>
+      </div>
     );
 
   if (resolvedTheme === "light")
     return (
-      <span
+      <div
         className="rounded-full group cursor-pointer hover:bg-neutral-500/30 p-2"
         onClick={() => setTheme("dark")}
       >
         <Sun size={18} color="#0a0a0a" />
-      </span>
+      </div>
     );
 }
