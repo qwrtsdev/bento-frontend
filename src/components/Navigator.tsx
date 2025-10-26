@@ -2,7 +2,13 @@ import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
 import FriendItem from "@/components/FriendItem";
 
-export default function Navigator() {
+export default function Navigator({
+  username,
+  status,
+}: {
+  username: string;
+  status: "ออนไลน์" | "ออฟไลน์" | "ไม่อยู่";
+}) {
   return (
     <div className="flex flex-col h-screen">
       <div className="flex flex-row justify-between p-3 align-center border-b border-neutral-600 items-center">
@@ -16,10 +22,10 @@ export default function Navigator() {
           />
           <div className="ml-2">
             <p className="text-sm font-medium overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-28 dark:text-white">
-              blondedlnwza
+              {username}
             </p>
             <p className="text-xs text-neutral-500 hover:underline hover:cursor-pointer">
-              ออนไลน์
+              {status}
             </p>
           </div>
         </div>
