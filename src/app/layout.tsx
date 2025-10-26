@@ -1,8 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import Navigator from "@/components/Navigator";
 import { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
+import { Theme } from "@radix-ui/themes";
 
 const LineSeed = localFont({
   src: [
@@ -21,8 +21,8 @@ const LineSeed = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Chatty",
-    template: "%s | Chatty",
+    default: "Bento",
+    template: "%s | Bento",
   },
 };
 
@@ -33,21 +33,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <ThemeProvider enableSystem={true} defaultTheme="system">
-        <body
-          className={`${LineSeed.className} relative h-screen w-screen overflow-hidden antialiased`}
-        >
-          <div className="scrollbar-hide h-full w-full overflow-auto flex justify-center items-center">
-            <div className="max-w-4xl h-full w-full flex border-neutral-600 border-l border-r">
-              <div className="w-[30%] border-r border-neutral-600 overflow-y-auto">
-                <Navigator />
-              </div>
-
-              <div className="w-[70%] overflow-y-auto">{children}</div>
-            </div>
-          </div>
-        </body>
-      </ThemeProvider>
+      <body
+        className={`${LineSeed.className} relative h-screen w-screen overflow-hidden antialiased`}
+      >
+        <div className="scrollbar-hide h-full w-full overflow-auto flex justify-center items-center">
+          <ThemeProvider enableSystem={true} defaultTheme="system">
+            <Theme>{children}</Theme>
+          </ThemeProvider>
+        </div>
+      </body>
     </html>
   );
 }

@@ -15,9 +15,11 @@ export default function Navigator() {
           />
           <div className="ml-2">
             <p className="text-sm font-medium overflow-hidden text-ellipsis whitespace-nowrap w-full max-w-28">
-              blonded
+              blondedlnwza
             </p>
-            <p className="text-xs text-neutral-500">ออนไลน์</p>
+            <p className="text-xs text-neutral-500 hover:underline hover:cursor-pointer">
+              ออนไลน์
+            </p>
           </div>
         </div>
         <ThemeToggle />
