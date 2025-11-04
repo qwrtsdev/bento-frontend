@@ -12,13 +12,17 @@ export default function ThemeToggle() {
     setMounted(true);
   }, []);
 
+  if (!mounted) {
+    return <div className="rounded-full p-2 w-[34px] h-[34px]" />;
+  }
+
   if (resolvedTheme === "dark")
     return (
       <div
         className="rounded-full group cursor-pointer hover:bg-neutral-500/30 p-2"
         onClick={() => setTheme("light")}
       >
-        <Moon size={18} color="#d4d4d4" />
+        <Moon size={18} className="text-neutral-900 dark:text-neutral-300" />
       </div>
     );
 
@@ -28,7 +32,7 @@ export default function ThemeToggle() {
         className="rounded-full group cursor-pointer hover:bg-neutral-500/30 p-2"
         onClick={() => setTheme("dark")}
       >
-        <Sun size={18} color="#0a0a0a" />
+        <Sun size={18} className="text-neutral-900 dark:text-neutral-300" />
       </div>
     );
 }

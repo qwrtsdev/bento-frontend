@@ -7,6 +7,11 @@ import { Theme } from "@radix-ui/themes";
 const LineSeed = localFont({
   src: [
     {
+      path: "../../public/fonts/LINESeedSansTH_W_Th.woff2",
+      weight: "300",
+      style: "thin",
+    },
+    {
       path: "../../public/fonts/LINESeedSansTH_W_Rg.woff2",
       weight: "400",
       style: "normal",
@@ -20,7 +25,7 @@ const LineSeed = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Bento - Get Closer.",
+  title: "Bento - Let's Get Closer.",
 };
 
 export default function RootLayout({

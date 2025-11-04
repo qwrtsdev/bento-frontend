@@ -11,16 +11,22 @@ import {
 import { Button } from "@/components/ui/button";
 import { UserRound } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function Chat() {
+  const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <div className="h-full flex flex-col relative *:select-none">
       <Empty>
         <EmptyHeader>
           <EmptyMedia>
-            <UserRound color={resolvedTheme === "dark" ? "white" : "black"} />
+            <UserRound className="text-neutral-900 dark:text-neutral-300" />
           </EmptyMedia>
           <EmptyTitle className="font-bold dark:text-white">
             ส่งข้อความ
