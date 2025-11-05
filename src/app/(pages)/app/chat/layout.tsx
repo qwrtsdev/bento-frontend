@@ -17,7 +17,7 @@ export default function RootLayout({
     <div className="h-dvh dark:bg-neutral-900 flex justify-center">
       <div className="max-w-4xl h-full w-full flex border-neutral-600 border-l border-r">
         <div className="hidden sm:block md:w-[30%] border-r border-neutral-600 overflow-y-auto">
-          <Navigator username="Nuttapong Nakawirot" status="ออนไลน์" />
+          <Navigator username="Nuttapong Nakawirot" userStatus="ออนไลน์" />
         </div>
 
         <div className="md:w-[70%] w-full overflow-y-auto">{children}</div>
