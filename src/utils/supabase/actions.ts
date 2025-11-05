@@ -9,6 +9,12 @@ export async function login() {
   const header = await headers();
   const origin = header.get("origin");
 
+  try {
+    await supabase.auth.signOut();
+  } catch (error) {
+    // do nothing.
+  }
+
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
@@ -22,7 +28,7 @@ export async function login() {
 
   if (error) {
     console.log(error);
-    redirect("/error");
+    redirect("/auth/error");
   }
 
   console.log(data);
@@ -37,7 +43,7 @@ export async function logout() {
 
   if (error) {
     console.log(error);
-    redirect("/error");
+    redirect("/auth/error");
   }
 
   redirect("/");
