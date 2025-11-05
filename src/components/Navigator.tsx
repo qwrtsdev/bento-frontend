@@ -4,11 +4,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import Status from "@/components/Status";
 import { createClient } from "@/utils/supabase/server";
 
-export default async function Navigator({
-  userStatus,
-}: {
-  userStatus: "ออนไลน์" | "ออฟไลน์" | "ไม่อยู่";
-}) {
+export default async function Navigator() {
   const supabase = await createClient();
   const {
     data: { user },
@@ -27,11 +23,9 @@ export default async function Navigator({
           />
           <div className="min-w-0 flex-1">
             <p className="text-sm font-medium overflow-hidden text-ellipsis whitespace-nowrap dark:text-white">
-              {user?.user_metadata?.full_name
-                ? user.user_metadata.full_name
-                : "Unknown"}
+              {user?.user_metadata?.full_name || "Unknown"}
             </p>
-            <Status status={userStatus} />
+            <Status />
           </div>
         </div>
         <ThemeToggle />

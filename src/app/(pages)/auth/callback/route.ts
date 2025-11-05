@@ -6,7 +6,9 @@ export async function GET(request: Request) {
   const code = requestUrl.searchParams.get("code");
 
   if (!code) {
-    return NextResponse.redirect(`${requestUrl.origin}/auth/error`);
+    return NextResponse.redirect(
+      `${requestUrl.origin}/auth/error?message=sign_up_not_allowed`,
+    );
   } else {
     const supabase = await createClient();
     await supabase.auth.exchangeCodeForSession(code);

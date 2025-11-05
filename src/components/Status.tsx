@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,12 +9,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-export default function Status({ status }: { status: string }) {
-  const [userStatus, setUserStatus] = useState(status);
-
-  useEffect(() => {
-    setUserStatus("Online");
-  }, []);
+export default function Status() {
+  const [userStatus, setUserStatus] = useState("Online");
 
   return (
     <DropdownMenu>
@@ -24,7 +20,10 @@ export default function Status({ status }: { status: string }) {
         </p>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-60">
-        <DropdownMenuRadioGroup value={status} onValueChange={setUserStatus}>
+        <DropdownMenuRadioGroup
+          value={userStatus}
+          onValueChange={setUserStatus}
+        >
           <DropdownMenuRadioItem value="Online">Online</DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="Idle">Idle</DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="Offline">Offline</DropdownMenuRadioItem>
